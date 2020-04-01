@@ -1,0 +1,92 @@
+﻿@model Epam3.Models.ApplicantViewModel
+
+@{
+    ViewBag.Title = "DeleteApplicant";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DeleteApplicant</h2>
+
+@helper DeleteApplicant()
+{
+    @Html.BeginForm("DeleteApplicantConfirmed", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" })
+    {
+        @Html.HiddenFor(m => Model.Id)
+        <div class="form-group">
+            @Html.Label("Фамилия", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="Surname" value="@Model.Surname" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Имя", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="Name" value="@Model.Name" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Отчество", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="Patronym" value="@Model.Patronym" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Email", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="EmailApp" value="@Model.EmailApp" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Город", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="City" value="@Model.City" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Область", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="Region" value="@Model.Region" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Образование", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="Education" value="@Model.Education" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Оценка по математике", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="Math" value="@Model.Math" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Оценка по украинскому", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="UkrLanguage" value="@Model.UkrLanguage" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Оценка по английскому", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="EngLanguage" value="@Model.EngLanguage" class="form-control" readonly />
+            </div>
+        </div>
+        @Html.HiddenFor(m => Model.FacultyId)
+        @Html.HiddenFor(m => Model.Faculty)
+        <div class="form-group">
+            <div class="col-md-offset-6 col-md-6">
+                <input type="submit" class="btn btn-danger" value="Удалить" />
+            </div>
+        </div>
+    ViewData["FacultyId"] = Model.FacultyId;
+    }
+}
+
+@DeleteApplicant()
+
+<div class="form-group">
+    <div class="col-md-offset-6 col-md-6">
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("AmdinApplicant", "Home", new { faculty = ViewData["FacultyId"], page = 1 })'">Назад</button>
+    </div>
+</div>

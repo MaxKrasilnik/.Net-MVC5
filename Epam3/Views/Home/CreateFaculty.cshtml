@@ -1,0 +1,35 @@
+﻿@model Epam3.Models.FacultyViewModel
+@{
+    ViewBag.Title = "CreateFaculty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateFaculty</h2>
+
+@Html.BeginForm("CreateFaculty", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" })
+{
+<div class="form-group">
+    @Html.Label("Название факультета", new { @class = "col-md-5 control-label" })
+    <div class="col-md-6">
+        <input type="text" name="Name" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    @Html.Label("Кол-во бюджетных мест", new { @class = "col-md-5 control-label" })
+    <div class="col-md-6">
+        <input type="text" name="QtyBudget" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    @Html.Label("Общее кол-во мест", new { @class = "col-md-5 control-label" })
+    <div class="col-md-6">
+        <input type="text" name="QtyAll" class="form-control" />
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-offset-6 col-md-6">
+        <input type="submit" class="btn btn-default" value="Создать" />
+    </div>
+</div>
+}

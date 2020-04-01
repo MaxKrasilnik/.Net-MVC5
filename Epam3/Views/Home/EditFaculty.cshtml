@@ -1,0 +1,48 @@
+﻿@model Epam3.Models.FacultyViewModel
+
+@{
+    ViewBag.Title = "AmdinEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AmdinEdit</h2>
+
+@helper EditFaculty()
+{
+    @Html.BeginForm("EditFaculty", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" })
+    {
+        @Html.HiddenFor(m=>m.Id)
+        <div class="form-group">
+            @Html.Label("Название факультета", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(m => Model.Name, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Кол-во бюджетных мест", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(m => Model.QtyBudget, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Общее кол-во мест", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(m => Model.QtyAll, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-6 col-md-6">
+                <input type="submit" class="btn btn-warning" value="Сохранить" />
+            </div>
+        </div>
+    }
+}
+
+@EditFaculty()
+
+<div class="form-group">
+    <div class="col-md-offset-6 col-md-6">
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("AmdinFaculty", "Home", new { page = 1 })'">Назад</button>
+    </div>
+</div>

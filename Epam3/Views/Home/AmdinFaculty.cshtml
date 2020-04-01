@@ -1,0 +1,112 @@
+﻿@model Epam3.Models.FacultyGetView
+@using Epam3.Models;
+@using Epam3.Helpers;
+
+@{
+    ViewBag.Title = "AmdinFaculty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    "use strict";
+
+    function ChangeSelect(val){
+
+
+        alert("Hello");
+        let table = document.getElementById('facultyTable');
+        let tbody = document.getElementById('tableBody');
+
+
+        if (val == 1) {
+            alert("1");
+            //tbody.replaceWith(Html.Sort(Model.Faculties.OrderBy(f => f.Name).ToList()));
+        }
+        if (val == 2) {
+            alert("2");
+            //tbody.replaceWith(@Html.Sort(Model.Faculties.OrderBy(f => f.QtyBudget).ToList()));
+        }
+        if (val == 3) {
+            //alert("3");
+            tbody.replaceWith(@Html.Sort(Model.Faculties.OrderBy(f => f.QtyAll).ToList()));
+        }
+    }
+</script>
+
+@*<script>
+        "use strict";
+
+        function ChangeSelect(val) {
+            if (val == 1) {
+                let tableBody = document.getElementById('tableBody');
+                let sortedRows = Array.from(tableBody.rows)
+                    .sort((rowA, rowB) => rowA.cells[0].innerHTML > rowB.cells[0].innerHTML ? 1 : -1);
+
+                tableBody.append(...sortedRows);
+            }
+            if (val == 2) {
+                let tableBody = document.getElementById('tableBody');
+                let sortedRows = Array.from(tableBody.rows)
+                    .sort((rowA, rowB) => rowA.cells[1].innerHTML > rowB.cells[1].innerHTML ? 1 : -1);
+
+                tableBody.append(...sortedRows);
+            }
+            if (val == 3) {
+                let tableBody = document.getElementById('tableBody');
+                let sortedRows = Array.from(tableBody.rows)
+                    .sort((rowA, rowB) => rowA.cells[2].innerHTML > rowB.cells[2].innerHTML ? 1 : -1);
+
+                tableBody.append(...sortedRows);
+            }
+        }
+
+    </script>*@
+
+<div class="col-md-6">
+    <select name="FacultyId" class="form-control form-control-sm" id="sortFaculty" onchange="ChangeSelect(this.value)">
+        <option value="1">От А до Я</option>
+        <option value="2">По кол-ву бюджетных мест</option>
+        <option value="3">По общему кол-ву мест</option>
+    </select>
+</div>
+
+
+
+<h2>AmdinFaculty</h2>
+
+
+
+<table class="table table-hover" id="facultyTable">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Факультет</th>
+            <th scope="col">Кол-во бюджетных мест</th>
+            <th scope="col">Общее кол-во мест</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        @foreach (var item in Model.Faculties)
+        {
+            <tr class="trInfo">
+                <td>@item.Name</td>
+                <td>@item.QtyBudget</td>
+                <td>@item.QtyAll</td>
+                <td><button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("AmdinApplicant", "Home", new { faculty = item.Id, page=1 })'">Абитуриенты</button></td>
+                <td><button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("EditFaculty", "Home", new { faculty = item.Id })'">Редактировать</button></td>
+                <td><button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteFaculty", "Home", new { id = item.Id })'">Удалить</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("AmdinFaculty", new { page = x }))
+</div>
+<div style="text-align: center;">
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("CreateFaculty", "Home")'">Создать факультет</button>
+</div>
+

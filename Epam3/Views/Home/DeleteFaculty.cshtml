@@ -1,0 +1,48 @@
+﻿@model Epam3.Models.FacultyViewModel
+
+@{
+    ViewBag.Title = "DeleteFaculty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DeleteFaculty</h2>
+
+@helper DeleteFaculty()
+{
+    @Html.BeginForm("DeleteFacultyConfirmed", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" })
+    {
+        @Html.HiddenFor(m => m.Id)
+        <div class="form-group">
+            @Html.Label("Название факультета", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="Name" value="@Model.Name" class = "form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Кол-во бюджетных мест", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="QtyBudget" value="@Model.QtyBudget" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Общее кол-во мест", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="QtyBudget" value="@Model.QtyAll" class="form-control" readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-6 col-md-6">
+                <input type="submit" class="btn btn-danger" value="Удалить" />
+            </div>
+        </div>
+    }
+}
+
+@DeleteFaculty()
+
+<div class="form-group">
+    <div class="col-md-offset-6 col-md-6">
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("AmdinFaculty", "Home", new { page = 1 })'">Назад</button>
+    </div>
+</div>

@@ -1,0 +1,314 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div style="text-align:center;">
+    <h3>Введите свои данные</h3>
+</div>
+
+
+@helper ApplicantRegister()
+{
+    @Html.BeginForm("MakeApplicant", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" })
+    {
+        <div class="form-group">
+            @Html.Label("Фамилия", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type = "text" name="Surname" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Имя", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type = "text" name="Name" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Отчество", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type = "text" name="Patronym" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("EmailApp", new { @class = "col-md-5 control-label" })
+        
+            <div class="col-md-6">
+                <input type = "text" name="EmailApp" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Город", new { @class = "col-md-5 control-label" })
+        
+            <div class="col-md-6">
+                <input type = "text" name="City" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Область", new { @class = "col-md-5 control-label" })
+        
+            <div class="col-md-6">
+                <input type = "text" name="Region" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Образование", new { @class = "col-md-5 control-label" })
+        
+            <div class="col-md-6">
+                <input type = "text" name="Education" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Оценка по украинскому языку", new { @class = "col-md-5 control-label" })
+        
+            <div class="col-md-6">
+                <input type = "text" name="UkrLanguage" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Оценка по английскому языку", new { @class = "col-md-5 control-label" })
+        
+            <div class="col-md-6">
+                <input type = "text" name="EngLanguage" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Оценка по математике", new { @class = "col-md-5 control-label" })
+        
+            <div class="col-md-6">
+                <input type = "text" name="Math" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Факультет", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <select name="FacultyId" class="form-control form-control-sm">
+                        <option value="1"> Факультет компьютерных наук</option>
+                        <option value="2"> Факультет компьютерной инженерии и управления</option>
+                        <option value="3"> Факультет информационно-аналитических технологий</option>      
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-6 col-md-6">
+                <input type = "submit" class="btn btn-default" value="Зарегистрироваться" />
+            </div>
+        </div>
+    }
+}
+
+
+@ApplicantRegister()
+
+@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+        <hr />
+        @Html.ValidationSummary()
+
+        foreach (var model in Model)
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => model.Surname, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.Surname, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.Name, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.Name, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.Patronym, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.Patronym, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.Email, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.City, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.City, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.Region, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.Region, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.Education, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.Education, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.UkrLanguage, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBox("UkrLanguage", model.UkrLanguage, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.EngLanguage, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBox("EngLanguage", model.EngLanguage, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.Math, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBox("Math", model.Math, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.FacultyId, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    <select class="form-control form-control-sm">
+                        <option value="1">Факультет компьютерных наук</option>
+                        <option value="2">Факультет компьютерной инженерии и управления</option>
+                        <option value="3">Факультет информационно-аналитических технологий</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Register" />
+                </div>
+            </div>
+
+            <hr />
+
+        }
+    }*@
+
+@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+        <hr />
+        @Html.ValidationSummary()
+
+        foreach (var model in Model)
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => model.Surname, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.Surname, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.Name, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.Name, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.Patronym, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.Patronym, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.Email, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.City, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.City, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.Region, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.Region, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.Education, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => model.Education, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.UkrLanguage, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBox("UkrLanguage", model.UkrLanguage, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.EngLanguage, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBox("EngLanguage", model.EngLanguage, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.Math, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBox("Math", model.Math, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => model.FacultyId, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    <select class="form-control form-control-sm">
+                        <option value="1">Факультет компьютерных наук</option>
+                        <option value="2">Факультет компьютерной инженерии и управления</option>
+                        <option value="3">Факультет информационно-аналитических технологий</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Register" />
+                </div>
+            </div>
+
+            <hr />
+        }
+    }*@
+
+
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtyAll)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtyBudget)
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QtyAll)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QtyBudget)
+                </td>
+
+            </tr>
+        }
+
+    </table>*@

@@ -1,0 +1,105 @@
+﻿@model Epam3.Models.ApplicantGetView
+@using Epam3.Helpers
+@{
+    ViewBag.Title = "AmdinApplicant";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AmdinApplicant</h2>
+
+<table class="table table-hover">
+    <thead class="thead-light">
+        <tr style="text-align: center;">
+            <th scope="col">Фамилия</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Отчество</th>
+            <th scope="col">Оценка по математике</th>
+            <th scope="col">Оценка по украинскому</th>
+            <th scope="col">Оценка по английскому</th>
+            <th scope="col">Средний балл</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="text-align: center;">
+
+        @foreach (var item in Model.Applicants)
+        {
+
+        <tr>
+            <td>@item.Surname</td>
+            <td>@item.Name</td>
+            <td>@item.Patronym</td>
+            <td>@item.Math</td>
+            <td>@item.UkrLanguage</td>
+            <td>@item.EngLanguage</td>
+            <td style="background-color: mediumspringgreen;" >@Html.Action("AverageRating", "Home", new { math=item.Math, ukr=item.UkrLanguage, eng=item.EngLanguage }) </td>
+            <td><button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("AllInfoApplicant", "Home", new {  applicantId=item.Id })'">Подробнее</button></td>
+            <td><button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("EditApplicant", "Home", new { applicantId=item.Id })'">Редактировать</button></td>
+            <td><button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteApplicant", "Home", new { applicantId=item.Id })'">Удалить</button></td>
+        </tr>
+        ViewData["FacultyId"]= item.FacultyId;
+        }
+    </tbody>
+</table>
+
+<br />
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("AmdinApplicant", new { page = x }))
+</div>
+
+<div style="text-align: center;">
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("CreateApplicant", "Home", new { facultyId = ViewData["FacultyId"] })'">Создать абитуриента</button>
+</div>
+<br />
+
+<div style="text-align: center;">
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("AmdinFaculty", "Home", new { page = 1 })'">Назад</button>
+</div>
+
+<!--
+    @*
+<table class="table table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Отчество</th>
+            <th scope="col">еmail</th>
+            <th scope="col">Город</th>
+            <th scope="col">Область</th>
+            <th scope="col">Образование</th>
+            <th scope="col">Оценка по математике</th>
+            <th scope="col">Оценка по украинскому</th>
+            <th scope="col">Оценка по английскому</th>
+            <th scope="col">Факультет</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.Applicants)
+        {
+
+        <tr>
+            <td>@item.Surname</td>
+            <td>@item.Name</td>
+            <td>@item.Patronym</td>
+            <td>@item.EmailApp</td>
+            <td>@item.City</td>
+            <td>@item.Region</td>
+            <td>@item.Education</td>
+            <td>@item.Math</td>
+            <td>@item.UkrLanguage</td>
+            <td>@item.EngLanguage</td>
+            <td>@item.FacultyId</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<br />
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("AmdinApplicant", new { page = x }))
+</div>
+        *@
+        -->

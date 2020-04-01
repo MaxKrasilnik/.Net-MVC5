@@ -1,0 +1,99 @@
+﻿@model Epam3.Models.FacultyViewModel
+
+@{
+    ViewBag.Title = "CreateApplicant";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateApplicant</h2>
+
+@helper CreateApplicant()
+{
+    @Html.BeginForm("CreateApplicant", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" })
+    {
+        <div class="form-group">
+            @Html.Label("Фамилия", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="Surname" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Имя", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="Name" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Отчество", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <input type="text" name="Patronym" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("EmailApp", new { @class = "col-md-5 control-label" })
+
+            <div class="col-md-6">
+                <input type="text" name="EmailApp" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Город", new { @class = "col-md-5 control-label" })
+
+            <div class="col-md-6">
+                <input type="text" name="City" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Область", new { @class = "col-md-5 control-label" })
+
+            <div class="col-md-6">
+                <input type="text" name="Region" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Образование", new { @class = "col-md-5 control-label" })
+
+            <div class="col-md-6">
+                <input type="text" name="Education" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Оценка по украинскому языку", new { @class = "col-md-5 control-label" })
+
+            <div class="col-md-6">
+                <input type="text" name="UkrLanguage" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Оценка по английскому языку", new { @class = "col-md-5 control-label" })
+
+            <div class="col-md-6">
+                <input type="text" name="EngLanguage" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Оценка по математике", new { @class = "col-md-5 control-label" })
+
+            <div class="col-md-6">
+                <input type="text" name="Math" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Факультет", new { @class = "col-md-5 control-label" })
+            <div class="col-md-6">
+                <select name="FacultyId" class="form-control form-control-sm">
+                    <option value="@Model.Id">@Model.Name</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-6 col-md-6">
+                <input type="submit" class="btn btn-default" value="Создать абитуриента" />
+            </div>
+        </div>
+    }
+}
+
+
+@CreateApplicant()
