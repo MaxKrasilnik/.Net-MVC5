@@ -62,14 +62,19 @@
 
     </script>*@
 
-<div class="col-md-6">
-    <select name="FacultyId" class="form-control form-control-sm" id="sortFaculty" onchange="ChangeSelect(this.value)">
+<div style="margin-top: 20px;">
+    <select style="margin: auto;" name="FacultyId" class="form-control form-control-sm" id="sortFaculty" onchange="ChangeSelect(this.value)">
         <option value="1">От А до Я</option>
         <option value="2">По кол-ву бюджетных мест</option>
         <option value="3">По общему кол-ву мест</option>
     </select>
 </div>
 
+<div style="text-align: center; margin-top: 30px;">
+    <button onclick="location.href='@Url.Action("AmdinFacultySort", "Home", new { value = 1 })'" type="button" class="btn btn-primary">От А до Я</button>
+    <button onclick="location.href='@Url.Action("AmdinFacultySort", "Home", new { value = 2 })'" type="button" class="btn btn-primary">По кол-ву бюджетных мест</button>
+    <button onclick="location.href='@Url.Action("AmdinFacultySort", "Home", new { value = 3 })'" type="button" class="btn btn-primary">По общему кол-ву мест</button>
+</div>
 
 
 <h2>AmdinFaculty</h2>
